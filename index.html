@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel = "icon" href ="https://img.icons8.com/cute-clipart/64/000000/kahoot.png" type = "image/x-icon">
+    <title>Kahoot</title>
+</head>
+<body>
+    <!-- User Name Div -->
+    <div class="user-name flex-center" id="user-name">
+        <h1>Kahoot</h1>
+        <h2 id="game-over-h2">Type Your Name</h2>
+        <input type="text" class="name-input" id="user-input" placeholder="...name">
+        <ul>
+            <li>*Name must be a string</li>
+            <li>*Name must contain at least 2 characters</li>
+        </ul>
+        <button id="playBtn" class="btn">Play Game <i class="fas fa-gamepad"></i></button>
+    </div>
+
+    <!-- Top -->
+    <div class="container">
+        <div class="progressBar flex-center">
+            <p class="d-n-for-resp"><span class="question-num-span">Question: </span><span id="progress"></span>/10</p>
+            <h1>Kahoot Game</h1>
+            <p><span class="player-num-span">Player Name: </span><span id="playerName"></span></p>
+        </div>
+        <div class="for-mob flex-center">
+            <p><span>Player Name: </span><span id="playerNameMob"></span></p>
+            <p class="d-f-for-resp"><span class="question-num-span">Question: </span><span id="progressForMob"></span>/10</p>
+        </div>
+        
+
+        <!-- Middle -->
+        <div class="middleSection flex-center">
+            <div class="clock circle-bg flex-center">
+                <i class="far fa-clock"></i>
+                <p id="timeP">
+                    <strong><span id="timeSpan"></span></strong>
+                </p>
+            </div>
+            <div id="quiz" class="question-wrapper flex-center">
+                <p id="quizQuestion" class="question"></p>
+            </div>
+            <div class="right-side flex-center">
+                <div class="answers circle-bg flex-center">
+                    <p class="answers-num" id="score"></p>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="bottomSection">
+            <button class="choice flex-center" onclick="check('A')">
+                <i class="fas fa-circle"></i>
+                <p id="choiceA"></p>
+            </button>
+            <button class="choice flex-center" onclick="check('B')">
+                <i class="fas fa-cube"></i>
+                <p id="choiceB"></p>
+            </button>
+            <button class="choice flex-center" onclick="check('C')">
+                <i class="fas fa-star"></i>
+                <p id="choiceC"></p>
+            </button>
+            <button class="choice flex-center" onclick="check('D')">
+                <i class="fas fa-tree"></i>
+                <p id="choiceD"></p>
+            </button>
+        </div>
+
+        <!-- Game Over -->
+        <div class="game-over flex-center" id="game-over">
+            <h1>Kahoot</h1>
+            <h2 id="game-over-h2">Game Over!</h2>
+            <p>Your Have <span id="game-over-span"></span> Correct Answer</p>
+            <a id="playAgainBtn" href="index.html" class="btn">Play Again <i class="fas fa-redo"></i></a>
+        </div>
+
+
+        <script src="js/main.js"></script>
+    </div>
+</body>
+</html>
