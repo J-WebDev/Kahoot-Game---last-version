@@ -38,81 +38,32 @@ scoreNum.innerHTML = score;
 
 userInput.focus();
 
-var questions = [{
-    question: "2+2?",
-    choiceA: "2",
-    choiceB: "4",
-    choiceC: "1",
-    choiceD: "0",
-    correctAnswer: "B"
-}, {
-    question: "12+12?",
-    choiceA: "12",
-    choiceB: "34",
-    choiceC: "24",
-    choiceD: "11",
-    correctAnswer: "C"
-}, {
-    question: "35-6?",
-    choiceA: "29",
-    choiceB: "54",
-    choiceC: "31",
-    choiceD: "14",
-    correctAnswer: "A"
-}, {
-    question: "3*3?",
-    choiceA: "9",
-    choiceB: "27",
-    choiceC: "3",
-    choiceD: "1",
-    correctAnswer: "A"
-}, {
-    question: "5+23?",
-    choiceA: "2",
-    choiceB: "225",
-    choiceC: "31",
-    choiceD: "28",
-    correctAnswer: "D"
-}, {
-    question: "45+12?",
-    choiceA: "57",
-    choiceB: "31",
-    choiceC: "43",
-    choiceD: "12",
-    correctAnswer: "A"
-},{
-    question: "4+2?",
-    choiceA: "2",
-    choiceB: "6",
-    choiceC: "1",
-    choiceD: "0",
-    correctAnswer: "B"
-}, {
-    question: "122+12?",
-    choiceA: "12",
-    choiceB: "34",
-    choiceC: "134",
-    choiceD: "11",
-    correctAnswer: "C"
-}, {
-    question: "35-5?",
-    choiceA: "30",
-    choiceB: "54",
-    choiceC: "31",
-    choiceD: "14",
-    correctAnswer: "A"
-}, {
-    question: "3/3?",
-    choiceA: "1",
-    choiceB: "27",
-    choiceC: "3",
-    choiceD: "2",
-    correctAnswer: "A"
-}];
+class Questions {
+    constructor(question, choiceA, choiceB, choiceC, choiceD, correctAnswer) {
+        this.question = question;
+        this.choiceA = choiceA;
+        this.choiceB = choiceB;
+        this.choiceC = choiceC;
+        this.choiceD = choiceD;
+        this.correctAnswer = correctAnswer;
+    }
+}
 
-// User Name
+var quest1 = new Questions("2 + 2 = ?", "2", "4", "1", "0", "B");
+var quest2 = new Questions("12 + 12 = ?", "12", "34", "24", "11", "C");
+var quest3 = new Questions("35 - 6 = ?", "29", "54", "31", "14", "A");
+var quest4 = new Questions("3 * 3 = ?", "9", "27", "3", "1", "A");
+var quest5 = new Questions("5 + 23 = ?", "2", "225", "31", "28", "D");
+var quest6 = new Questions("45 + 12 = ?", "57", "31", "43", "12", "A");
+var quest7 = new Questions("4 + 2 = ?", "2", "6", "1", "0", "B");
+var quest8 = new Questions("122 + 12 = ?", "12", "34", "134", "11", "C");
+var quest9 = new Questions("35 - 5 = ?", "30", "54", "31", "14", "A");
+var quest10 = new Questions("3 / 3 = ?", "1", "27", "3", "2", "A");
+
+var questionsArray = [quest1, quest2, quest3, quest4, quest5, quest6, quest7, quest8, quest9, quest10];
+
+// Enter user name and display game content
 function displayGameContent() {
-    
     var userNameVal = userInput.value;
 
     if(typeof userNameVal === "string" && userNameVal.length >= 2) {
@@ -146,13 +97,12 @@ function makeAlert(){
 function getQuestion() {
     increaseQuestionIndex();
     forQuestion++;
-    var q = questions[forQuestion];
+    var q = questionsArray[forQuestion];
     quizQuestion.innerHTML = q.question;
     optionA.innerHTML = q.choiceA;
     optionB.innerHTML = q.choiceB;
     optionC.innerHTML = q.choiceC;
     optionD.innerHTML = q.choiceD;
-    choiceResponse.style.display = "none";
 }
 
 // increase question index if question index < 10
@@ -166,8 +116,8 @@ function increaseQuestionIndex() {
 
 // Check user answer
 function check(answer) {
-    if (forQuestion < questions.length -1) {
-        if (answer == questions[forQuestion].correctAnswer) {
+    if (forQuestion < questionsArray.length -1) {
+        if (answer == questionsArray[forQuestion].correctAnswer) {
             score++;
             scoreNum.innerHTML = score;
             getQuestion();
@@ -175,7 +125,7 @@ function check(answer) {
             getQuestion();
         }
     }else {
-        if (answer == questions[forQuestion].correctAnswer) {
+        if (answer == questionsArray[forQuestion].correctAnswer) {
             score++;
             scoreNum.innerHTML = score;
             gameOverDiv.style.display = "flex";
@@ -187,8 +137,6 @@ function check(answer) {
     questionIndex++;
     progress.innerHTML = questionIndex;
 }
-
-
 
 playBtn.addEventListener("click", displayGameContent);
 playAgainBtn.addEventListener("click", location.reload);
